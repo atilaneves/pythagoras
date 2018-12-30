@@ -29,6 +29,8 @@ rustc release  134       352
 
 Range           CT (ms)   RT (msg)
 
+clang debug   4198       +inf
+clang release 4436        294
 dmd debug       90      12734
 dmd release    106       7755
 ldc debug      158      15579
