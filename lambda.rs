@@ -12,7 +12,6 @@ fn triples<F>(func: F) where F: Fn(i32, i32, i32) {
             for y in x..=z {
                 if x*x + y*y == z*z {
                     func(x, y, z);
-                    println!("({}, {}, {})", x, y, z);
                     i = i + 1;
                     if i == 1000 {
                         return;
