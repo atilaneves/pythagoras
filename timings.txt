@@ -25,3 +25,13 @@ ldc debug       59       580
 ldc release     79       154
 rustc debug    111      9252
 rustc release  134       352
+
+
+Range           CT (ms)   RT (msg)
+
+dmd debug       90      12734
+dmd release    106       7755
+ldc debug      158      15579
+ldc release    324       1045
+rustc debug    128      11018
+rustc release  180        422
