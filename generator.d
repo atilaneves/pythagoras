@@ -1,8 +1,15 @@
-import std.stdio;
-import std.typecons;
-import std.concurrency;
+void main() {
+    import std.stdio: writeln;
+    foreach(tup; triples(1000)) {
+        writeln("(", tup[0], ", ", tup[1], ", ", tup[2], ")");
+    }
+}
+
 
 auto triples(int n) {
+    import std.concurrency: Generator, yield;
+    import std.typecons: Tuple, tuple;
+
     return new Generator!(Tuple!(int, int, int))({
         int i = 0;
         for (int z = 1; ; ++z)
@@ -14,10 +21,4 @@ auto triples(int n) {
                             return;
                     }
     });
-}
-
-void main() {
-    foreach(tup; triples(1000)) {
-        writeln("(", tup[0], ", ", tup[1], ", ", tup[2], ")");
-    }
 }
