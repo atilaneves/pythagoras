@@ -27,7 +27,7 @@ rustc debug    111      9252
 rustc release  134       352
 
 
-Range           CT (ms)   RT (msg)
+Range           CT (ms)   RT (ms)
 
 clang debug   4198       +inf
 clang release 4436        294
@@ -37,3 +37,11 @@ ldc debug      158      15579
 ldc release    324       1045
 rustc debug    128      11018
 rustc release  180        422
+
+
+Generator      CT (ms)  RT (ms)
+
+dmd debug      208      381
+dmd release    222      220
+ldc debug      261      603
+ldc release    335      224
