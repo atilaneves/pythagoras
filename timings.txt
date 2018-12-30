@@ -1,3 +1,8 @@
+dmd version: 2.083.1
+clang version: 7.0.1
+rustc version: 1.31.1
+
+
 Simple          CT (ms)  RT (ms)
 
 clang debug     59       599
@@ -18,3 +23,5 @@ dmd debug       33       368
 dmd release     37       154
 ldc debug       59       580
 ldc release     79       154
+rustc debug    111      9252
+rustc release  134       352

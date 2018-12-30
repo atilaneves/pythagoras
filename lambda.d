@@ -2,7 +2,7 @@ import core.stdc.stdio: printf;
 import std.typecons: tuple;
 
 
-void printTriples(alias func)(int N) {
+void triples(alias func)(int N) {
     int i = 0;
     for (int z = 1; ; ++z) {
         for (int x = 1; x <= z; ++x) {
@@ -19,6 +19,6 @@ void printTriples(alias func)(int N) {
 
 
 void main() {
-    printTriples!((t) { printf("(%i, %i, %i)\n", t[0], t[1], t[2]); })
-                 (1000);
+    triples!((t) { printf("(%i, %i, %i)\n", t[0], t[1], t[2]); })
+            (1000);
 }
