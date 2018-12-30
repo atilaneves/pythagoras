@@ -1,0 +1,10 @@
+Simple          CT (ms)  RT (ms)
+
+C++ debug       59       599
+C++ release     69       154
+dmd debug       11       369
+dmd release     11       153
+ldc debug       31       599
+ldc release     38       153
+Rust debug     100      8445
+Rust release   103       349

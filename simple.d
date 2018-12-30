@@ -8,7 +8,7 @@ int main() {
             for (int y = x; y <= z; ++y)
                 if (x*x + y*y == z*z) {
                     printf("(%i,%i,%i)\n", x, y, z);
-                    if (++i == 100)
+                    if (++i == 1000)
                         goto done;
                 }
     done:
