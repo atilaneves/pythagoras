@@ -45,3 +45,8 @@ dmd debug      208      381
 dmd release    222      220
 ldc debug      261      603
 ldc release    335      224
+
+
+N=5k                    RT (ms)
+dmd relase simple       8819
+dmd release generator   8875
