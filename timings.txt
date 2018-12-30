@@ -1,10 +1,20 @@
 Simple          CT (ms)  RT (ms)
 
-C++ debug       59       599
-C++ release     69       154
+clang debug     59       599
+clang release   69       154
 dmd debug       11       369
 dmd release     11       153
 ldc debug       31       599
 ldc release     38       153
-Rust debug     100      8445
-Rust release   103       349
+rustc debug    100      8445
+rustc release  103       349
+
+
+Lambda          CT (ms)  RT (ms)
+
+clang debug    188       597
+clang release  203       154
+dmd debug       33       368
+dmd release     37       154
+ldc debug       59       580
+ldc release     79       154
