@@ -1,5 +1,5 @@
-fn main() {
-    let triples = (1..).flat_map(|z| {
+fn triples() -> impl Iterator<Item=(i32, i32, i32)> {
+    (1..).flat_map(|z| {
         (1..=z).flat_map(move |x| {
             (x..=z).filter_map(move |y| {
                 if x * x + y * y == z * z {
@@ -9,8 +9,11 @@ fn main() {
                 }
             })
         })
-    });
-    for (x, y, z) in triples.take(1000) {
+    })
+}
+
+fn main() {
+    for (x, y, z) in triples().take(1000) {
         println!("({}, {}, {})", x, y, z);
     }
 }
