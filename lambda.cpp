@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <iostream>
 #include <tuple>
 
 using namespace std;
@@ -23,6 +23,6 @@ void triples(int N, F&& func) {
 int main() {
     triples(
         1000,
-        [](auto t) { printf("(%i, %i, %i)\n", get<0>(t), get<1>(t), get<2>(t)); }
+        [](auto t) { cout << "(" << get<0>(t) << "," << get<1>(t) << "," << get<2>(t) << ")" << endl; }
     );
 }

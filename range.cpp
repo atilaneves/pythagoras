@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <iostream>
 #include <range/v3/all.hpp>
 
 using namespace ranges;
@@ -15,6 +15,6 @@ int main() {
     });
 
     RANGES_FOR(auto triple, triples | view::take(1000)) {
-        printf("(%i, %i, %i)\n", std::get<0>(triple), std::get<1>(triple), std::get<2>(triple));
+        std::cout << "(" << std::get<0>(triple) << "," << std::get<1>(triple) << "," << std::get<2>(triple) << ")" << std::endl;
     }
 }
