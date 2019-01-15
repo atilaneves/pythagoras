@@ -4,3 +4,5 @@ simple
 lambda
 range
 generator
+bench.o
+bench
