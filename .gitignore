@@ -11,3 +11,4 @@ generator_*release
 bench.o
 bench
 range-v3
+triples-ats

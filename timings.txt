@@ -37,6 +37,7 @@ ldc debug      162      13449
 ldc release    348       1050
 rustc debug    139       8682
 rustc release  136        136
+ATS            ???      14937
 
 
 Generator      CT (ms)  RT (ms)
