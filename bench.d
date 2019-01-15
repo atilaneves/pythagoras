@@ -162,9 +162,9 @@ string[] compileCommand(in Compiler compiler, in Implementation implementation, 
         case rust:
             final switch(mode) with(Mode) {
                 case debug_:
-                    return ["rustc", "--emit=obj", fileName];
+                    return ["rustc", "+nightly", "--emit=obj", fileName];
                 case release:
-                    return ["rustc", "--emit=obj", "-C", "opt-level=2", fileName];
+                    return ["rustc", "+nightly", "--emit=obj", "-C", "opt-level=2", fileName];
             }
     }
 }
@@ -203,9 +203,9 @@ string[] linkCommand(in Compiler compiler, in Implementation implementation, in 
         case rust:
             final switch(mode) with(Mode) {
                 case debug_:
-                    return ["rustc", "-o", binFileName, srcFileName];
+                    return ["rustc", "+nightly", "-o", binFileName, srcFileName];
                 case release:
-                    return ["rustc", "-o", binFileName, "-C", "opt-level=2", srcFileName];
+                    return ["rustc", "+nightly", "-o", binFileName, "-C", "opt-level=2", srcFileName];
             }
     }
 }

@@ -45,3 +45,5 @@ dmd debug      233      444
 dmd release    238      119
 ldc debug      286      549
 ldc release    360      129
+rustc debug    122     5755
+rustc release  148      141
