@@ -1,8 +1,13 @@
 *.o
 a.out
-simple
-lambda
-range
-generator
+simple_*debug_
+simple_*release
+lambda_*debug_
+lambda_*release
+range_*debug_
+range_*release
+generator_*debug_
+generator_*release
 bench.o
 bench
+range-v3

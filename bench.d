@@ -84,7 +84,7 @@ auto benchCT(in Compiler compiler, in Implementation implementation, in Mode mod
 
 auto benchRT(in Compiler compiler, in Implementation implementation, in Mode mode) {
     execute(linkCommand(compiler, implementation, mode));
-    const binFileName = binFileName(implementation);
+    const binFileName = binFileName(compiler, implementation, mode);
     return time(["./" ~ binFileName]);
 }
 
@@ -95,10 +95,11 @@ auto time(in string[] args) {
     import std.conv: text;
     import std.array: join;
     import std.datetime.stopwatch: StopWatch, AutoStart;
-    import std.datetime: hours, Duration;
+    import std.datetime: minutes, hours, Duration;
     import std.algorithm: min;
     import std.stdio: write, writeln, stdout;
 
+    auto globalSw = StopWatch(AutoStart.yes);
     auto duration = 99.hours;
 
     foreach(i; 0 .. numTries) {
@@ -107,7 +108,13 @@ auto time(in string[] args) {
         auto sw = StopWatch(AutoStart.yes);
         execute(args);
         duration = min(duration, cast(Duration) sw.peek);
+        // ain't nobody got time for that
+        if((cast(Duration) globalSw.peek) > 2.minutes) {
+            writeln;
+            return duration;
+        }
     }
+
     writeln;
 
     return duration;
@@ -147,9 +154,9 @@ string[] compileCommand(in Compiler compiler, in Implementation implementation, 
         case clang:
             final switch(mode) with(Mode) {
                 case debug_:
-                    return ["clang++", "-c", fileName];
+                    return ["clang++", "-Irange-v3/include/", "-c", fileName];
                 case release:
-                    return ["clang++", "-c", "-O2", fileName];
+                    return ["clang++", "-Irange-v3/include/", "-c", "-O2", fileName];
             }
 
         case rust:
@@ -166,15 +173,15 @@ string[] compileCommand(in Compiler compiler, in Implementation implementation, 
 string[] linkCommand(in Compiler compiler, in Implementation implementation, in Mode mode) {
 
     const srcFileName = srcFileName(compiler, implementation);
-    const binFileName = binFileName(implementation);
+    const binFileName = binFileName(compiler, implementation, mode);
 
     final switch(compiler) with(Compiler) {
         case dmd:
             final switch(mode) with(Mode) {
                 case debug_:
-                    return ["dmd", srcFileName];
+                    return ["dmd", "-of" ~ binFileName, srcFileName];
                 case release:
-                    return ["dmd", "-O", "-inline", srcFileName];
+                    return ["dmd", "-of" ~ binFileName, "-O", "-inline", srcFileName];
             }
 
         case ldc:
@@ -188,17 +195,17 @@ string[] linkCommand(in Compiler compiler, in Implementation implementation, in 
         case clang:
             final switch(mode) with(Mode) {
                 case debug_:
-                    return ["clang++", "-o", binFileName, srcFileName];
+                    return ["clang++", "-Irange-v3/include/", "-o", binFileName, srcFileName];
                 case release:
-                    return ["clang++", "-o", binFileName, "-O2", srcFileName];
+                    return ["clang++", "-Irange-v3/include/", "-o", binFileName, "-O2", srcFileName];
             }
 
         case rust:
             final switch(mode) with(Mode) {
                 case debug_:
-                    return ["rustc", srcFileName];
+                    return ["rustc", "-o", binFileName, srcFileName];
                 case release:
-                    return ["rustc", "-C", "opt-level=2", srcFileName];
+                    return ["rustc", "-o", binFileName, "-C", "opt-level=2", srcFileName];
             }
     }
 }
@@ -206,13 +213,14 @@ string[] linkCommand(in Compiler compiler, in Implementation implementation, in 
 
 
 string srcFileName(in Compiler compiler, in Implementation implementation) {
-    return binFileName(implementation) ~ extension(compiler);
+    import std.conv: text;
+    return text(implementation) ~ extension(compiler);
 }
 
 
-string binFileName(in Implementation implementation) {
+string binFileName(in Compiler compiler, in Implementation implementation, in Mode mode) {
     import std.conv: text;
-    return text(implementation);
+    return text(implementation, "_", compiler, "_", mode);
 }
 
 string extension(in Compiler compiler) {
