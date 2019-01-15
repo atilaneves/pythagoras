@@ -32,8 +32,8 @@ impl<T, G> Iterator for IterGen<G>
 fn triples() -> impl Iterator<Item=(i32, i32, i32)> {
     IterGen(||
         for z in 1.. {
-            for x in 1..=z {
-                for y in x..=z {
+            for x in 1..(z + 1) {
+                for y in x..(z + 1) {
                     if x*x + y*y == z*z {
                         yield (x, y, z)
                     }

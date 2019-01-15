@@ -1,7 +1,7 @@
 fn triples() -> impl Iterator<Item=(i32, i32, i32)> {
     (1..).flat_map(|z| {
-        (1..=z).flat_map(move |x| {
-            (x..=z).filter_map(move |y| {
+        (1..(z + 1)).flat_map(move |x| {
+            (x..(z + 1)).filter_map(move |y| {
                 if x * x + y * y == z * z {
                     Some((x, y, z))
                 } else {
