@@ -5,48 +5,43 @@ rustc version: 1.31.1
 
 Simple          CT (ms)  RT (ms)
 
-clang debug     59       599
-clang release   69       154
-dmd debug       11       369
-dmd release     11       153
-ldc debug       31       599
-ldc release     38       153
-rustc debug    100      8445
-rustc release  103       349
+clang debug     67       537
+clang release   79       120
+dmd debug       12       443
+dmd release     12       120
+ldc debug       27       531
+ldc release     42       133
+rustc debug    110      5973
+rustc release  124       188
 
 
 Lambda          CT (ms)  RT (ms)
 
-clang debug    188       597
-clang release  203       154
-dmd debug       33       368
-dmd release     37       154
-ldc debug       59       580
-ldc release     79       154
-rustc debug    111      9252
-rustc release  134       352
+clang debug    215       546
+clang release  225       118
+dmd debug       35       429
+dmd release     44       131
+ldc debug       56       543
+ldc release     78       120
+rustc debug    113      6128
+rustc release  134       121
 
 
 Range           CT (ms)   RT (ms)
 
-clang debug   4198       +inf
-clang release 4436        294
-dmd debug       90      12734
-dmd release    106       7755
-ldc debug      158      15579
-ldc release    324       1045
-rustc debug    128      11018
-rustc release  180        422
+clang debug   4434     159310
+clang release 4614        233
+dmd debug       99       9188
+dmd release    120       5621
+ldc debug      162      13449
+ldc release    348       1050
+rustc debug    139       8682
+rustc release  136        136
 
 
 Generator      CT (ms)  RT (ms)
 
-dmd debug      208      381
-dmd release    222      220
-ldc debug      261      603
-ldc release    335      224
-
-
-N=5k                    RT (ms)
-dmd relase simple       8819
-dmd release generator   8875
+dmd debug      233      444
+dmd release    238      119
+ldc debug      286      549
+ldc release    360      129
